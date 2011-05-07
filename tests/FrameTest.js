@@ -7,6 +7,7 @@ FrameTest = TestCase('Frame', {
     tearDown : function()
     {
         Bowling.Frame.score = 0;
+        Bowling.Frame.numberOfTries = 0;
     },
 
     'test Score is 0 at beginning of the game' : function()
@@ -36,6 +37,28 @@ FrameTest = TestCase('Frame', {
     {
         Bowling.Frame.addPins(2);
         Bowling.Frame.addPins(3);
+        this._assertTheScoreIs(5);
+    },
+
+    'test Adding multiple values to the frame can not get the value over ten' : function()
+    {
+        Bowling.Frame.addPins(7);
+        Bowling.Frame.addPins(7);
+        this._assertTheScoreIs(10);
+    },
+
+    'test More than three returns null' : function()
+    {
+        Bowling.Frame.addPins(7);
+        Bowling.Frame.addPins(7);
+        assertNull(Bowling.Frame.addPins(7));
+    },
+
+    'test More than three sets the score to the same as if two had been passed' : function()
+    {
+        Bowling.Frame.addPins(2);
+        Bowling.Frame.addPins(3);
+        Bowling.Frame.addPins(4);
         this._assertTheScoreIs(5);
     },
 
