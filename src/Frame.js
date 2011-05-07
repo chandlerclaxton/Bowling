@@ -4,6 +4,12 @@ Bowling.Frame = Bowling.Frame || {};
 Bowling.Frame.score = 0;
 Bowling.Frame.numberOfTries = 0;
 
+Bowling.Frame.factory = function()
+{
+    Bowling.Frame.score = 0;
+    Bowling.Frame.numberOfTries = 0;
+};
+
 Bowling.Frame.getCurrentScore = function()
 {
     return Bowling.Frame.score;

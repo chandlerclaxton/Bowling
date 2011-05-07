@@ -1,13 +1,12 @@
-FrameTest = TestCase('Frame', {
+FrameTest = TestCase('FrameTest', {
     setUp : function()
     {
-        
+        Bowling.Frame.factory();
     },
 
     tearDown : function()
     {
-        Bowling.Frame.score = 0;
-        Bowling.Frame.numberOfTries = 0;
+
     },
 
     'test Score is 0 at beginning of the game' : function()
@@ -60,6 +59,14 @@ FrameTest = TestCase('Frame', {
         Bowling.Frame.addPins(3);
         Bowling.Frame.addPins(4);
         this._assertTheScoreIs(5);
+    },
+
+    'test Factory creates a new frame' : function()
+    {
+        Bowling.Frame.addPins(2);
+        Bowling.Frame.addPins(3);
+        Bowling.Frame.factory();
+        this._assertTheScoreIs(0);
     },
 
     _assertTheScoreIs : function(score)
