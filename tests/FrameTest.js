@@ -50,7 +50,7 @@ FrameTest = TestCase('FrameTest', {
     {
         Bowling.Frame.addPins(7);
         Bowling.Frame.addPins(7);
-        assertNull(Bowling.Frame.addPins(7));
+        assertEquals(Bowling.Frame.addPins(7), "Error");
     },
 
     'test More than three sets the score to the same as if two had been passed' : function()
@@ -69,8 +69,8 @@ FrameTest = TestCase('FrameTest', {
         this._assertTheScoreIs(0);
     },
 
-    _assertTheScoreIs : function(score)
+    _assertTheScoreIs : function(expectedScore)
     {
-        assertEquals(score, Bowling.Frame.getCurrentScore());
+        assertEquals(expectedScore, Bowling.Frame.getCurrentScore());
     }
 });
